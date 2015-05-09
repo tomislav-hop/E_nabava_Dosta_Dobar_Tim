@@ -41,12 +41,12 @@ namespace E_nabava
         {
              SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["KorisniciConnectionString"].ConnectionString);
                try{
-                   Guid guid = Guid.NewGuid();  
-                conn.Open();
-                string insertQuerry="insert into  Korisnici (id_korisnici,naziv_dobavljaca,adresa_dobavljaca,email,broj_telefona,korisnicko_ime,lozinka) values (@Id,@Naziv,@Adresa,@Email,@Broj,@Korime,@Lozinka)";
-                SqlCommand comm = new SqlCommand(insertQuerry,conn);
-                Response.Write("da");
-                comm.Parameters.AddWithValue("@Id", guid);
+               Guid guid = Guid.NewGuid();  
+               conn.Open();
+               string insertQuerry="insert into  Korisnici (id_korisnici,naziv_dobavljaca,adresa_dobavljaca,email,broj_telefona,korisnicko_ime,lozinka) values (@Id,@Naziv,@Adresa,@Email,@Broj,@Korime,@Lozinka)";
+               SqlCommand comm = new SqlCommand(insertQuerry,conn);
+               Response.Write("da");
+               comm.Parameters.AddWithValue("@Id", guid);
                comm.Parameters.AddWithValue("@Naziv",tbNaziv.Text);
                comm.Parameters.AddWithValue("@Adresa",tbAdresa.Text);
                comm.Parameters.AddWithValue("@Email",tbEmail.Text);
