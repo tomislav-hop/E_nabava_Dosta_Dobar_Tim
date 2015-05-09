@@ -7,14 +7,14 @@ using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
-using System.Data.SqlClient;
+using System.Net.Mail;
 namespace E_nabava
 {
     public partial class Login : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -42,7 +42,7 @@ namespace E_nabava
                     conn.Open();
                     string passwordQuery = "select lozinka from Korisnici where korisnicko_ime='" + tbUname.Text + "'";
                     SqlCommand passComm = new SqlCommand(passwordQuery, conn);
-                    string password = passComm.ExecuteScalar().ToString().Replace(" ","");
+                    string password = passComm.ExecuteScalar().ToString().Replace(" ", "");
                     if (password == tbPass.Text)
                     {
                         Session["New"] = tbUname.Text;
@@ -54,11 +54,51 @@ namespace E_nabava
                         Response.Write("Password is incorrect!");
                     }
                 }
-                else {
+                else
+                {
                     Response.Write("Username is incorrect!");
                 }
                 conn.Close();
             }
+        }
+
+        public void SaljiPoruku()
+        {
+            System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage();
+            mail.To.Add("tomislav.hop@gmail.com");
+            mail.From = new MailAddress("tomislav.hop@gmail.com", "Aktivacija računa", System.Text.Encoding.UTF8);
+            mail.Subject = "Aktivacija računa";
+            mail.SubjectEncoding = System.Text.Encoding.UTF8;
+            mail.Body = "Ovdje ide sadrzaj maila";
+            mail.BodyEncoding = System.Text.Encoding.UTF8;
+            mail.IsBodyHtml = true;
+            mail.Priority = MailPriority.High;
+            SmtpClient client = new SmtpClient();
+            client.Credentials = new System.Net.NetworkCredential("fejk.tiskara@gmail.com", "NOVAlozinka");
+            client.Port = 587;
+            client.Host = "smtp.gmail.com";
+            client.EnableSsl = true;
+            try
+            {
+                client.Send(mail);
+                //Page.RegisterStartupScript("UserMsg", "<script>alert('Successfully Send...');if(alert){ window.location='SendMail.aspx';}</script>");
+            }
+            catch (Exception ex)
+            {
+                Exception ex2 = ex;
+                string errorMessage = string.Empty;
+                while (ex2 != null)
+                {
+                    errorMessage += ex2.ToString();
+                    ex2 = ex2.InnerException;
+                }
+                //Page.RegisterStartupScript("UserMsg", "<script>alert('Sending Failed...');if(alert){ window.location='SendMail.aspx';}</script>");
+            }
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            SaljiPoruku();
         }
     }
 }
