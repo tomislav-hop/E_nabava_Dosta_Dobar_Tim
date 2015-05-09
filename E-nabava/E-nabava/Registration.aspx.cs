@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 namespace E_nabava
 {
     public partial class Registration : System.Web.UI.Page
@@ -43,6 +45,7 @@ namespace E_nabava
                 conn.Open();
                 string insertQuerry="insert into  Korisnici (id_korisnici,naziv_dobavljaca,adresa_dobavljaca,email,broj_telefona,korisnicko_ime,lozinka) values (@Id,@Naziv,@Adresa,@Email,@Broj,@Korime,@Lozinka)";
                 SqlCommand comm = new SqlCommand(insertQuerry,conn);
+                Response.Write("da");
                 comm.Parameters.AddWithValue("@Id", guid);
                comm.Parameters.AddWithValue("@Naziv",tbNaziv.Text);
                comm.Parameters.AddWithValue("@Adresa",tbAdresa.Text);
@@ -62,4 +65,5 @@ namespace E_nabava
           
         }
     }
+  
 }
