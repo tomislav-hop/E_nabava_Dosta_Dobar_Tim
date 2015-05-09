@@ -26,7 +26,7 @@ namespace E_nabava
             });
             if (IsPostBack)
             {
-                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["KorisniciConnectionString"].ConnectionString);
+                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["E-nabavaConnectionString"].ConnectionString);
                 conn.Open();
                 string provjeriKorisnika = "select count(*) from Korisnici where korisnicko_ime='" + tbKorisnickoIme.Text + "'";
                 SqlCommand comm = new SqlCommand(provjeriKorisnika, conn);
@@ -41,12 +41,12 @@ namespace E_nabava
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["KorisniciConnectionString"].ConnectionString);
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["E-nabavaConnectionString"].ConnectionString);
             try
             {
                 Guid guid = Guid.NewGuid();
                 conn.Open();
-                string insertQuerry = "insert into  Korisnici (id_korisnici,naziv_dobavljaca,adresa_dobavljaca,email,broj_telefona,korisnicko_ime,lozinka) values (@Id,@Naziv,@Adresa,@Email,@Broj,@Korime,@Lozinka)";
+                string insertQuerry = "insert into  Korisnici (id_korisnici,naziv,adresa,email,broj_telefona,korisnicko_ime,lozinka,tip_korisnika,aktiviran,aktivacijski_kod) values (@Id,@Naziv,@Adresa,@Email,@Broj,@Korime,@Lozinka,@Tip,@Aktiviran,@Aktivacijski_kod)";
                 SqlCommand comm = new SqlCommand(insertQuerry, conn);
                 Response.Write("da");
                 comm.Parameters.AddWithValue("@Id", guid);
@@ -56,8 +56,11 @@ namespace E_nabava
                 comm.Parameters.AddWithValue("@Broj", tbBrojTelefona.Text);
                 comm.Parameters.AddWithValue("@Korime", tbKorisnickoIme.Text);
                 comm.Parameters.AddWithValue("@Lozinka", tbLozinka.Text);
+                comm.Parameters.AddWithValue("@Tip",2);
+                comm.Parameters.AddWithValue("@Aktiviran", 0);
+                comm.Parameters.AddWithValue("@Aktivacijski_kod", "");
                 comm.ExecuteNonQuery();
-                Response.Redirect("Manager.aspx");
+                Response.Redirect("Login.aspx");
                 Response.Write("Registracija uspjesna");
 
                 conn.Close();

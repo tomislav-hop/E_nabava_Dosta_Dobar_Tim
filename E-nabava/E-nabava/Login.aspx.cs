@@ -12,6 +12,9 @@ namespace E_nabava
 {
     public partial class Login : System.Web.UI.Page
     {
+        string referent = Convert.ToString(1);
+        string dobavljac = Convert.ToString(2);
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -19,6 +22,7 @@ namespace E_nabava
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            
             string JQueryVer = "1.7.1";
             ScriptManager.ScriptResourceMapping.AddDefinition("jquery", new ScriptResourceDefinition
             {
@@ -31,23 +35,45 @@ namespace E_nabava
             });
             if (IsPostBack)
             {
-                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["KorisniciConnectionString"].ConnectionString);
+                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["E-nabavaConnectionString"].ConnectionString);
                 conn.Open();
                 string provjeriKorisnika = "select count(*) from Korisnici where korisnicko_ime='" + tbUname.Text + "'";
                 SqlCommand comm = new SqlCommand(provjeriKorisnika, conn);
                 int temp = Convert.ToInt32(comm.ExecuteScalar().ToString());
                 conn.Close();
+                
                 if (temp == 1)
                 {
                     conn.Open();
                     string passwordQuery = "select lozinka from Korisnici where korisnicko_ime='" + tbUname.Text + "'";
                     SqlCommand passComm = new SqlCommand(passwordQuery, conn);
                     string password = passComm.ExecuteScalar().ToString().Replace(" ", "");
+                   
                     if (password == tbPass.Text)
                     {
-                        Session["New"] = tbUname.Text;
-                        Response.Write("Password is correct!");
-                        Response.Redirect("Manager.aspx");
+                        string sessionQuery = "select tip_korisnika from Korisnici where korisnicko_ime='" + tbUname.Text + "'";
+                        SqlCommand sessComm = new SqlCommand(sessionQuery, conn);
+                        string tip = sessComm.ExecuteScalar().ToString().Replace(" ", "");
+                        
+                        if (tip.Equals(referent))
+                        {
+                          
+                            Session["sesija"] = referent;
+                            Response.Write("Password is correct!");
+                            Response.Redirect("Referent.aspx");
+
+                        }
+      
+                        
+                        else if (tip.Equals(dobavljac))
+                        {
+                           
+                            Session["sesija"] = dobavljac;
+                            Response.Write("Password is correct!");
+                            Response.Redirect("Dobavljac.aspx");
+
+                        }
+                       
                     }
                     else
                     {

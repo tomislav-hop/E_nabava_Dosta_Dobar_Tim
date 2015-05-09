@@ -15,6 +15,13 @@
         .auto-style3 {
             width: 172px;
         }
+        .auto-style4 {
+            width: 172px;
+            height: 16px;
+        }
+        .auto-style5 {
+            height: 16px;
+        }
     </style>
 </head>
 <body>
@@ -39,11 +46,12 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style3">&nbsp;</td>
-                <td>
-                    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Login" Width="125px" />
+                <td class="auto-style4"></td>
+                <td class="auto-style5">
+                    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Login" Width="125px" Height="44px" />
+                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Registration.aspx" style="text-align: center">Registriraj se</asp:HyperLink>
                 </td>
-                <td>&nbsp;</td>
+                <td class="auto-style5"></td>
             </tr>
             <tr>
                 <td class="auto-style3">&nbsp;</td>
@@ -51,7 +59,6 @@
                 <td>&nbsp;</td>
             </tr>
         </table>
-        <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Button" />
     </form>
 </body>
 </html>

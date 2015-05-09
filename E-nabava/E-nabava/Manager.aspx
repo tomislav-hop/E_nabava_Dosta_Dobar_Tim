@@ -21,12 +21,15 @@
             <AlternatingRowStyle BackColor="#F7F7F7" />
             <Columns>
                 <asp:BoundField DataField="id_korisnici" HeaderText="id_korisnici" ReadOnly="True" SortExpression="id_korisnici" />
-                <asp:BoundField DataField="naziv_dobavljaca" HeaderText="naziv_dobavljaca" SortExpression="naziv_dobavljaca" />
-                <asp:BoundField DataField="adresa_dobavljaca" HeaderText="adresa_dobavljaca" SortExpression="adresa_dobavljaca" />
+                <asp:BoundField DataField="naziv" HeaderText="naziv" SortExpression="naziv" />
+                <asp:BoundField DataField="adresa" HeaderText="adresa" SortExpression="adresa" />
                 <asp:BoundField DataField="email" HeaderText="email" SortExpression="email" />
                 <asp:BoundField DataField="broj_telefona" HeaderText="broj_telefona" SortExpression="broj_telefona" />
                 <asp:BoundField DataField="korisnicko_ime" HeaderText="korisnicko_ime" SortExpression="korisnicko_ime" />
                 <asp:BoundField DataField="lozinka" HeaderText="lozinka" SortExpression="lozinka" />
+                <asp:BoundField DataField="tip_korisnika" HeaderText="tip_korisnika" SortExpression="tip_korisnika" />
+                <asp:BoundField DataField="aktiviran" HeaderText="aktiviran" SortExpression="aktiviran" />
+                <asp:BoundField DataField="aktivacijski_kod" HeaderText="aktivacijski_kod" SortExpression="aktivacijski_kod" />
             </Columns>
             <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
             <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />
@@ -38,7 +41,7 @@
             <SortedDescendingCellStyle BackColor="#D8D8F0" />
             <SortedDescendingHeaderStyle BackColor="#3E3277" />
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSourceKorisnici" runat="server" ConnectionString="<%$ ConnectionStrings:KorisniciConnectionString %>" OnSelecting="SqlDataSource1_Selecting" SelectCommand="SELECT * FROM [Korisnici]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSourceKorisnici" runat="server" ConnectionString="<%$ ConnectionStrings:E-NabavaConnectionString %>" OnSelecting="SqlDataSource1_Selecting" SelectCommand="SELECT * FROM [korisnici]"></asp:SqlDataSource>
     </form>
 </body>
 </html>
