@@ -44,6 +44,10 @@ namespace E_nabava
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["E-nabavaConnectionString"].ConnectionString);
             try
             {
+                //Generiranje aktivacijskog koda
+                Random random = new Random();
+                int kod = random.Next(1000, 100000000);
+
                 Guid guid = Guid.NewGuid();
                 conn.Open();
                 string insertQuerry = "insert into  Korisnici (id_korisnici,naziv,adresa,email,broj_telefona,korisnicko_ime,lozinka,tip_korisnika,aktiviran,aktivacijski_kod) values (@Id,@Naziv,@Adresa,@Email,@Broj,@Korime,@Lozinka,@Tip,@Aktiviran,@Aktivacijski_kod)";
@@ -58,8 +62,11 @@ namespace E_nabava
                 comm.Parameters.AddWithValue("@Lozinka", tbLozinka.Text);
                 comm.Parameters.AddWithValue("@Tip",2);
                 comm.Parameters.AddWithValue("@Aktiviran", 0);
-                comm.Parameters.AddWithValue("@Aktivacijski_kod", "");
+                comm.Parameters.AddWithValue("@Aktivacijski_kod", kod.ToString());
                 comm.ExecuteNonQuery();
+
+                SaljiPoruku(tbEmail.Text, kod.ToString(), tbKorisnickoIme.Text);
+
                 Response.Redirect("Login.aspx");
                 Response.Write("Registracija uspjesna");
 
@@ -70,6 +77,38 @@ namespace E_nabava
                 Response.Write("Error:" + ex.ToString());
             }
 
+        }
+
+        public void SaljiPoruku(String email, String kod, String korIme)
+        {
+            System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage();
+            mail.To.Add("tomislav.hop@gmail.com");
+            mail.From = new MailAddress(email, "Aktivacija računa", System.Text.Encoding.UTF8);
+            mail.Subject = "Aktivacija računa";
+            mail.SubjectEncoding = System.Text.Encoding.UTF8;
+            mail.Body = "Korisničko ime: " + korIme + "<br>Aktivacijski kod: " + kod + "<br>Kliknite ovdje kako bi aktivirali račun: http://localhost:49993/Authenticate.aspx?korIme=" + korIme + "&aktKod=" + kod;
+            mail.BodyEncoding = System.Text.Encoding.UTF8;
+            mail.IsBodyHtml = true;
+            mail.Priority = MailPriority.High;
+            SmtpClient client = new SmtpClient();
+            client.Credentials = new System.Net.NetworkCredential("fejk.tiskara@gmail.com", "NOVAlozinka");
+            client.Port = 587;
+            client.Host = "smtp.gmail.com";
+            client.EnableSsl = true;
+            try
+            {
+                client.Send(mail);
+            }
+            catch (Exception ex)
+            {
+                Exception ex2 = ex;
+                string errorMessage = string.Empty;
+                while (ex2 != null)
+                {
+                    errorMessage += ex2.ToString();
+                    ex2 = ex2.InnerException;
+                }
+            }
         }
 
     }
