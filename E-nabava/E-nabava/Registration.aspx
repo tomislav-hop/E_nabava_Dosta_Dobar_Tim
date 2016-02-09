@@ -4,138 +4,108 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
-    <style type="text/css">
-        .auto-style1 {
-            width: 100%;
-        }
-        .auto-style2 {
-            font-weight: normal;
-            width: 215px;
-            text-align: right;
-        }
-        .auto-style3 {
-            width: 215px;
-            text-align: right;
-        }
-        .auto-style4 {
-            width: 134px;
-        }
-        .auto-style5 {
-            width: 215px;
-            text-align: right;
-            height: 26px;
-        }
-        .auto-style6 {
-            width: 134px;
-            height: 26px;
-        }
-        .auto-style7 {
-            height: 26px;
-            text-align: left;
-        }
-        .auto-style8 {
-            text-align: left;
-        }
-        .auto-style9 {
-            width: 134px;
-            height: 26px;
-            text-align: left;
-        }
-        .auto-style10 {
-            width: 215px;
-            text-align: right;
-            height: 26px;
-        }
-        #form1 {
-            text-align: center;
-        }
-        .auto-style11 {
-            font-weight: normal;
-            font-size: xx-large;
-        }
-    </style>
+    <title>Metalska industrija Varaždin</title>
+    <link rel="shortcut icon" href="./img/logo_kartica.png" type="image/png">
+    <link href="bootstrap.css" rel="stylesheet" />
+    <link href="css.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Cabin' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    
 </head>
-<body style="font-weight: 700; text-align: center;">
-    <span class="auto-style11"><strong>Registracija
-    </strong></span>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top navigacija" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <img class="navigacijaLogo" src="img/logo.png" alt="" />
+                </a>
+            </div>
+            <div class=" row navigacijaPodaci">
+                <div class="navigacijaTekst">
+                    Fabijanska 33, 42 000 Varaždin, Croatia<br />
+                    tel. : + 385 42 404 100; Gospodarska bb<br />
+                    tel. : + 385 42 290 100; Fabijanska 33<br />
+                    e- mail: miv@miv.hr; sales@miv.hr; prodaja@miv.hr<br />
+                </div>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navigacijaLista">
+                    <li class="navigacijaElement">
+                        <a href="PocetnaStranica.aspx">POČETNA</a>
+                    </li>
+                    <li class="navigacijaElement">
+                        <a href="Login.aspx">PRIJAVA</a>
+                    </li>
+                    <li class="navigacijaElement">
+                        <a href="Registration.aspx">PREGISTRACIJA</a>
+                    </li>
+                   
+                  
+                   
+                    
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <div class="row">
+    <div class="container registracijaOkvir">
     <form id="form1" runat="server">
-        <table class="auto-style1">
-            <tr>
-                <td class="auto-style2"><strong>Naziv dobavljača</strong></td>
-                <td class="auto-style4">
-                    <asp:TextBox ID="tbNaziv" runat="server"></asp:TextBox>
-                </td>
-                <td class="auto-style8" style="color: #FF0000">
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="tbNaziv" ErrorMessage="Morate upisati naziv"></asp:RequiredFieldValidator>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style10">Adresa</td>
-                <td class="auto-style9">
-                    <asp:TextBox ID="tbAdresa" runat="server"></asp:TextBox>
-                </td>
-                <td class="auto-style7" style="color: #FF0000">
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="tbAdresa" ErrorMessage="Morate upisati adresu"></asp:RequiredFieldValidator>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style3">Broj telefona</td>
-                <td class="auto-style4">
-                    <asp:TextBox ID="tbBrojTelefona" runat="server" style="margin-bottom: 0px"></asp:TextBox>
-                </td>
-                <td class="auto-style8" style="color: #FF0000">
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="tbBrojTelefona" ErrorMessage="Morate upisati broj telefona"></asp:RequiredFieldValidator>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style3">E-mail</td>
-                <td class="auto-style4">
-                    <asp:TextBox ID="tbEmail" runat="server"></asp:TextBox>
-                </td>
-                <td class="auto-style8" style="color: #FF0000">
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="tbKorisnickoIme" ErrorMessage="Morate upisati E-mail"></asp:RequiredFieldValidator>
-                    <br />
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="tbEmail" ErrorMessage="Neispravan Email" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style3">Korisničko ime</td>
-                <td class="auto-style4">
-                    <asp:TextBox ID="tbKorisnickoIme" runat="server"></asp:TextBox>
-                </td>
-                <td class="auto-style8" style="color: #FF0000">
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="tbKorisnickoIme" ErrorMessage="Morate upisati korisnicko ime"></asp:RequiredFieldValidator>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style5">Lozinka</td>
-                <td class="auto-style6">
-                    <asp:TextBox ID="tbLozinka" runat="server" TextMode="Password"></asp:TextBox>
-                </td>
-                <td class="auto-style7" style="color: #FF0000" aria-required="False">
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="tbLozinka" ErrorMessage="Morate upisati lozinku"></asp:RequiredFieldValidator>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style3">Potvrda lozinke</td>
-                <td class="auto-style4">
-                    <asp:TextBox ID="tbPotvrdaLozinke" runat="server" TextMode="Password"></asp:TextBox>
-                </td>
-                <td class="auto-style8" style="color: #FF0000">
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="tbPotvrdaLozinke" ErrorMessage="Morate upisati potvrdu lozinke"></asp:RequiredFieldValidator>
-                    <br />
-                    <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="tbLozinka" ControlToValidate="tbPotvrdaLozinke" ErrorMessage="Lozinka i potvrda lozinke nisu iste"></asp:CompareValidator>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style3">&nbsp;</td>
-                <td class="auto-style4">
-                    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Prijava" />
-                </td>
-                <td class="auto-style8" style="color: #FF0000">&nbsp;</td>
-            </tr>
-        </table>
+        
+                <label class="registracijaLabela">Naziv dobavljača</label><br />
+                <asp:TextBox placeholder="Unesite naziv dobavljača" class="registracijaInput" ID="tbNaziv" runat="server"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="tbNaziv" ErrorMessage="Morate upisati naziv"></asp:RequiredFieldValidator>
+                <br />
+
+                <label class="registracijaLabela">Adresa</label><br />
+                <asp:TextBox placeholder="Unesite adresu" class="registracijaInput" ID="tbAdresa" runat="server"></asp:TextBox>             
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="tbAdresa" ErrorMessage="Morate upisati adresu"></asp:RequiredFieldValidator>
+                <br />
+                 
+                <label class="registracijaLabela">Broj telefona</label><br />
+                <asp:TextBox placeholder="Unesite broj telefona" class="registracijaInput" ID="tbBrojTelefona" runat="server" style="margin-bottom: 0px"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="tbBrojTelefona" ErrorMessage="Morate upisati broj telefona"></asp:RequiredFieldValidator>
+                <br />
+
+                <label class="registracijaLabela">E-mail</label><br />
+                <asp:TextBox placeholder="Unesite e-mail" class="registracijaInput" ID="tbEmail" runat="server"></asp:TextBox>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="tbEmail" ErrorMessage="Neispravan Email" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                <br />
+
+                <label class="registracijaLabela">Korisničko ime</label><br />
+                <asp:TextBox placeholder="Unesite korisničko ime" class="registracijaInput" ID="tbKorisnickoIme" runat="server"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="tbKorisnickoIme" ErrorMessage="Morate upisati korisnicko ime"></asp:RequiredFieldValidator>
+                <br />
+
+                <label class="registracijaLabela">Lozinka</label><br />
+                <asp:TextBox placeholder="Unesite lozinku" class="registracijaInput" ID="tbLozinka" runat="server" TextMode="Password"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="tbLozinka" ErrorMessage="Morate upisati lozinku"></asp:RequiredFieldValidator>
+                <br />
+
+                <label class="registracijaLabela">Potvrda lozinke</label><br />
+                <asp:TextBox placeholder="Unesite potvrdu lozinke" class="registracijaInput" ID="tbPotvrdaLozinke" runat="server" TextMode="Password"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="tbPotvrdaLozinke" ErrorMessage="Morate upisati potvrdu lozinke"></asp:RequiredFieldValidator>
+                <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="tbLozinka" ControlToValidate="tbPotvrdaLozinke" ErrorMessage="Lozinka i potvrda lozinke nisu iste"></asp:CompareValidator>
+                <br />
+        <div class="poljeGumb">
+                <asp:Button class="gumbRegistracija" ID="Button1" runat="server" OnClick="Button1_Click" Text="Registriraj se" />
+                </div>
     </form>
+    </div></div>
+    <div class="registracijaFooter">
+        <hr class="crtaFooter" />
+        <div class="tekstFooter" >@ 2015 MIV - Metalska industrija Varaždin</div>
+       
+    </div>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </body>
 </html>

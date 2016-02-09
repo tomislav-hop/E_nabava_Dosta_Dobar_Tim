@@ -38,6 +38,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itextsharp">
+      <HintPath>..\packages\iTextSharp.5.5.6\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -57,6 +60,20 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Alternativa_projekt.aspx" />
+    <Content Include="bootstrap.css" />
+    <Content Include="bootstrap_min.css" />
+    <Content Include="CRUDArtikli.aspx" />
+    <Content Include="CRUDKategorije.aspx" />
+    <Content Include="CRUDKorisnici.aspx" />
+    <Content Include="CRUDPodkategorije.aspx" />
+    <Content Include="CRUDProjekti.aspx" />
+    <Content Include="CRUDTipKorisnika.aspx" />
+    <Content Include="css.css" />
+    <Content Include="Odjava.aspx" />
+    <Content Include="packages.config" />
+    <Content Include="PocetnaStranica.aspx" />
+    <Content Include="ZaboravljenaLozinka.aspx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -71,19 +88,72 @@
     </Content>
     <Content Include="Authenticate.aspx" />
     <Content Include="Dobavljac.aspx" />
+    <Content Include="Investicijski_projekti.aspx" />
     <Content Include="Login.aspx" />
-    <Content Include="Manager.aspx" />
-    <Content Include="Referent.aspx" />
+    <Content Include="Pregled_Investicijskih_Projekata.aspx" />
+    <Content Include="Pregled_ponuda.aspx" />
     <Content Include="Registration.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Alternativa_projekt.aspx.cs">
+      <DependentUpon>Alternativa_projekt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Alternativa_projekt.aspx.designer.cs">
+      <DependentUpon>Alternativa_projekt.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Authenticate.aspx.cs">
       <DependentUpon>Authenticate.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Authenticate.aspx.designer.cs">
       <DependentUpon>Authenticate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Baza.cs" />
+    <Compile Include="CRUDArtikli.aspx.cs">
+      <DependentUpon>CRUDArtikli.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CRUDArtikli.aspx.designer.cs">
+      <DependentUpon>CRUDArtikli.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CRUDKategorije.aspx.cs">
+      <DependentUpon>CRUDKategorije.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CRUDKategorije.aspx.designer.cs">
+      <DependentUpon>CRUDKategorije.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CRUDKorisnici.aspx.cs">
+      <DependentUpon>CRUDKorisnici.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CRUDKorisnici.aspx.designer.cs">
+      <DependentUpon>CRUDKorisnici.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CRUDPodkategorije.aspx.cs">
+      <DependentUpon>CRUDPodkategorije.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CRUDPodkategorije.aspx.designer.cs">
+      <DependentUpon>CRUDPodkategorije.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CRUDProjekti.aspx.cs">
+      <DependentUpon>CRUDProjekti.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CRUDProjekti.aspx.designer.cs">
+      <DependentUpon>CRUDProjekti.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CRUDTipKorisnika.aspx.cs">
+      <DependentUpon>CRUDTipKorisnika.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CRUDTipKorisnika.aspx.designer.cs">
+      <DependentUpon>CRUDTipKorisnika.aspx</DependentUpon>
     </Compile>
     <Compile Include="Dobavljac.aspx.cs">
       <DependentUpon>Dobavljac.aspx</DependentUpon>
@@ -92,6 +162,13 @@
     <Compile Include="Dobavljac.aspx.designer.cs">
       <DependentUpon>Dobavljac.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Investicijski_projekti.aspx.cs">
+      <DependentUpon>Investicijski_projekti.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Investicijski_projekti.aspx.designer.cs">
+      <DependentUpon>Investicijski_projekti.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -99,21 +176,36 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Manager.aspx.cs">
-      <DependentUpon>Manager.aspx</DependentUpon>
+    <Compile Include="Mail.cs" />
+    <Compile Include="Odjava.aspx.cs">
+      <DependentUpon>Odjava.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Manager.aspx.designer.cs">
-      <DependentUpon>Manager.aspx</DependentUpon>
+    <Compile Include="Odjava.aspx.designer.cs">
+      <DependentUpon>Odjava.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PocetnaStranica.aspx.cs">
+      <DependentUpon>PocetnaStranica.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PocetnaStranica.aspx.designer.cs">
+      <DependentUpon>PocetnaStranica.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pregled_Investicijskih_Projekata.aspx.cs">
+      <DependentUpon>Pregled_Investicijskih_Projekata.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pregled_Investicijskih_Projekata.aspx.designer.cs">
+      <DependentUpon>Pregled_Investicijskih_Projekata.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pregled_ponuda.aspx.cs">
+      <DependentUpon>Pregled_ponuda.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pregled_ponuda.aspx.designer.cs">
+      <DependentUpon>Pregled_ponuda.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Referent.aspx.cs">
-      <DependentUpon>Referent.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Referent.aspx.designer.cs">
-      <DependentUpon>Referent.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Registration.aspx.cs">
       <DependentUpon>Registration.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -121,6 +213,17 @@
     <Compile Include="Registration.aspx.designer.cs">
       <DependentUpon>Registration.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ZaboravljenaLozinka.aspx.cs">
+      <DependentUpon>ZaboravljenaLozinka.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ZaboravljenaLozinka.aspx.designer.cs">
+      <DependentUpon>ZaboravljenaLozinka.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Themes\Theme1\" />
+    <Folder Include="img\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
